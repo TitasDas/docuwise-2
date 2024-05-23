@@ -2,7 +2,7 @@ import openai
 import streamlit as st
 import os
 from openai import OpenAI
-from evaluation_metrics import calculate_faithfulness
+from evaluation_metrics import calculate_faithfulness, calculate_context_relevancy, calculate_information_coverage
 from document_processor import get_index_for_pdf
 
 
@@ -27,10 +27,9 @@ def create_vectordb(files, filenames):
     # Show a spinner while creating the vectordb
     with st.spinner("Vector database"):
         vectordb = get_index_for_pdf(
-            [file.getvalue() for file in files], filenames, openai.api_key
+            [file.getvalue() for file in files], filenames
         )
     return vectordb
-
 
 # Upload PDF files using Streamlit's file uploader
 pdf_files = st.file_uploader("Upload PDF file", type="pdf", accept_multiple_files=True)
@@ -103,7 +102,7 @@ if question:
     response = []
     result = ""
     for chunk in client.chat.completions.create(
-        model="gpt-3.5-turbo", messages=prompt, stream=True
+        model="gpt-4-turbo", messages=prompt, stream=True
     ):
         text = chunk.choices[0].delta.content
         if text is not None:
@@ -111,9 +110,13 @@ if question:
             result = "".join(response).strip()
             botmsg.write(result)
 
-    # Calculate the faithfulness score for the response
-    faithfulness_score = calculate_faithfulness(result, pdf_extract)
+    faithfulness_score = calculate_faithfulness(result, [doc.page_content for doc in search_results])
+    context_relevancy_score = calculate_context_relevancy(question, result, [doc.page_content for doc in search_results])
+    information_coverage_score = calculate_information_coverage(result, [doc.page_content for doc in search_results])
+
     st.write(f"Faithfulness score: {faithfulness_score:.2f}")
+    st.write(f"Context relevancy score: {context_relevancy_score:.2f}")
+    st.write(f"Information coverage score: {information_coverage_score:.2f}")
 
     # Add the assistant's response to the prompt
     prompt.append({"role": "assistant", "content": result})
