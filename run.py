@@ -1,25 +1,14 @@
-import openai
 import streamlit as st
 import os
-from openai import OpenAI
 from evaluation_metrics import calculate_faithfulness
 from document_processor import get_index_for_pdf
-
+from transformers import pipeline
 
 # Set the title for the Streamlit app
 st.title("Turn PDFs into an Instant, Smart Searchable Knowledge Base")
 
-# Prompt for OpenAI API key if not already set in environment variables
-if not os.environ.get("OPENAI_API_KEY"):
-    api_key = st.text_input("Enter your OpenAI API key:", type="password")
-    if api_key:
-        os.environ["OPENAI_API_KEY"] = api_key
-    else:
-        st.error("Please enter your OpenAI API key to use the chatbot.")
-        st.stop()
-
-openai.api_key = os.environ.get("OPENAI_API_KEY")
-client = OpenAI(api_key=openai.api_key)
+# Set up the Hugging Face pipeline for question answering
+question_answering_pipeline = pipeline("question-answering", model="EleutherAI/gpt-neo-2.7B")
 
 # Cached function to create a vectordb for the provided PDF files
 @st.cache_resource
@@ -30,7 +19,6 @@ def create_vectordb(files, filenames):
             [file.getvalue() for file in files], filenames
         )
     return vectordb
-
 
 # Upload PDF files using Streamlit's file uploader
 pdf_files = st.file_uploader("Upload PDF file", type="pdf", accept_multiple_files=True)
@@ -81,7 +69,6 @@ if question:
 
     # Search the vectordb for similar content to the user's question
     search_results = vectordb.similarity_search(question, k=3)
-    # search_results
     pdf_extract = "/n ".join([result.page_content for result in search_results])
 
     # Update the prompt with the pdf extract
@@ -99,27 +86,18 @@ if question:
     with st.chat_message("assistant"):
         botmsg = st.empty()
 
-    # Call ChatGPT with streaming and display the response as it comes
-    response = []
-    result = ""
-    for chunk in client.chat.completions.create(
-        model="gpt-3.5-turbo", messages=prompt, stream=True
-    ):
-        text = chunk.choices[0].delta.content
-        if text is not None:
-            response.append(text)
-            result = "".join(response).strip()
-            botmsg.write(result)
+    # Use the Hugging Face pipeline for question answering
+    context = pdf_extract
+    response = question_answering_pipeline(question=question, context=context)
+    result = response['answer']
 
-    # Calculate the faithfulness score for the response
-    faithfulness_score = calculate_faithfulness(result, pdf_extract)
+    # Display the response
+    botmsg.write(result)
+
+    faithfulness_score = calculate_faithfulness(result, [doc.page_content for doc in search_results])
     st.write(f"Faithfulness score: {faithfulness_score:.2f}")
 
     # Add the assistant's response to the prompt
-    prompt.append({"role": "assistant", "content": result})
-
-    # Store the updated prompt in the session state
-    st.session_state["prompt"] = prompt
     prompt.append({"role": "assistant", "content": result})
 
     # Store the updated prompt in the session state
