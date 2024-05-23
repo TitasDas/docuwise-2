@@ -2,9 +2,9 @@ import re
 from io import BytesIO
 from typing import Tuple, List
 from langchain.docstore.document import Document
-from langchain.embeddings.openai import OpenAIEmbeddings
+from langchain_community.embeddings import SentenceTransformerEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.vectorstores.faiss import FAISS
+from langchain_community.vectorstores import Chroma
 from pypdf import PdfReader
 
 
@@ -41,21 +41,20 @@ def text_to_docs(text: List[str], filename: str) -> List[Document]:
             )
             doc.metadata["source"] = f"{doc.metadata['page']}-{doc.metadata['chunk']}"
             doc.metadata["filename"] = filename
-            # Add filename to metadata (also if required here is where we add any other details to the metadata)
             doc_chunks.append(doc)
     return doc_chunks
 
 
-def docs_to_index(docs, openai_api_key):
-    index = FAISS.from_documents(docs, OpenAIEmbeddings(openai_api_key=openai_api_key))
+def docs_to_index(docs):
+    embedding_model = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2")
+    index = Chroma.from_documents(docs, embedding_model)
     return index
 
 
-def get_index_for_pdf(pdf_files, pdf_names, openai_api_key):
+def get_index_for_pdf(pdf_files, pdf_names):
     documents = []
     for pdf_file, pdf_name in zip(pdf_files, pdf_names):
         text, filename = parse_pdf(BytesIO(pdf_file), pdf_name)
         documents = documents + text_to_docs(text, filename)
-    index = docs_to_index(documents, openai_api_key)
+    index = docs_to_index(documents)
     return index
-
