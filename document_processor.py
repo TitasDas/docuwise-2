@@ -2,9 +2,9 @@ import re
 from io import BytesIO
 from typing import Tuple, List
 from langchain.docstore.document import Document
-from langchain.embeddings import SentenceTransformerEmbeddings
+from langchain_community.embeddings import SentenceTransformerEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.vectorstores import Chroma
+from langchain_community.vectorstores import Chroma
 from pypdf import PdfReader
 
 
