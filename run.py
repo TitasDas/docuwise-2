@@ -103,7 +103,7 @@ if question:
     response = []
     result = ""
     for chunk in client.chat.completions.create(
-        model="gpt-3.5-turbo", messages=prompt, stream=True
+        model="gpt-4o", messages=prompt, stream=True
     ):
         text = chunk.choices[0].delta.content
         if text is not None:
