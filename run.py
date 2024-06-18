@@ -27,7 +27,7 @@ def create_vectordb(files, filenames):
     # Show a spinner while creating the vectordb
     with st.spinner("Vector database"):
         vectordb = get_index_for_pdf(
-            [file.getvalue() for file in files], filenames, openai.api_key
+            [file.getvalue() for file in files], filenames
         )
     return vectordb
 
