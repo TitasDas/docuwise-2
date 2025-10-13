@@ -1,6 +1,6 @@
 # Docuwise 2.0
 
-Welcome to [Docuwise 2.0](https://docuwise.streamlit.app/), an advanced document analysis platform designed to help you extract information from PDF documents seamlessly. Our system utilizes a Retrieval Augmented Generated system to provide answers to your queries directly from the content of your uploaded documents.
+Welcome to [Docuwise 2.0](https://docuwise.streamlit.app/), a quickly mocked up RAG app to play around with security methodologies and custom evaluation metrics that can be used in RAGs. 
 
 ## How to Use Docuwise 2.0
 
