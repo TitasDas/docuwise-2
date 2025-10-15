@@ -1,25 +1,83 @@
-# Docuwise 2.0
+# DocuWise 2.0
 
-Welcome to [Docuwise 2.0](https://docuwise.streamlit.app/), a quickly mocked up RAG app to play around with security methodologies and custom evaluation metrics that can be used in RAGS. 
+> **DocuWise 2.0** is the evolution of [**DocuWise 1.0**](https://github.com/TitasDas/DocuWise) — originally an Android app that used **Apache OpenNLP** for linguistic parsing and question understanding.  
+> The 2.0 version extends that foundation into a modern RAG framework enabling multi-document retrieval, semantic reasoning, and faithfulness evaluation.
 
-## How to Use Docuwise 2.0
+Welcome to [**DocuWise 2.0**](https://docuwise.streamlit.app/) , an experimental **Retrieval-Augmented Generation (RAG)** application built to explore **security methodologies**, **evaluation metrics**, and **faithfulness scoring** within RAG pipelines.  
 
-Follow these steps to start extracting information from your PDF documents:
+This project serves as both a prototype and a research sandbox for improving the reliability and interpretability of LLM-powered document question-answering systems.
 
-1. **API Key Configuration**: Enter your `OPENAI_API_KEY` in the designated field. This key enables the AI functionalities of our platform and is essential for processing your requests.
+---
 
-2. **Document Upload**: Use the browse button to upload the PDF documents from which you wish to extract information. Our platform supports a wide range of PDFs, facilitating easy access to the answers you need.
+## Getting Started
 
-3. **Submit Queries**: After uploading your documents, type any question related to their content. Our AI analyzes the text and provides you with relevant answers.
+Follow these steps to begin extracting knowledge from your PDF documents:
 
-### Important Considerations
+### 1. Configure API Key
+Enter your `OPENAI_API_KEY` in the app’s configuration field.  
+This key enables the model to process text, generate responses, and perform semantic retrieval.  
 
-While Docuwise 2.0 is designed to be a powerful tool for document analysis, there are a few considerations to keep in mind:
+> *Tip:* You can create or manage your API key at [OpenAI’s API Dashboard](https://platform.openai.com/account/api-keys).
 
-- **Faithfulness Score**: On occasion, the faithfulness score of an answer may be zero, even if the answer is derived from the uploaded document. This score is an indicator of how closely the answer matches the source material and can vary based on the complexity of the query and the content of the document.
+### 2. Upload Documents
+Use the **Browse Files** button to upload one or more PDF files.  
+The system supports most standard PDF formats and automatically indexes document content for retrieval.
 
-- **Content Limitations**: Please note that our system may not accurately read tables, diagrams, figures, or similar content within documents. We are continually working to improve our capabilities and appreciate your understanding.
+### 3. Ask Questions
+Once your PDFs are uploaded, type a question in the input field.  
+DocuWise 2.0 retrieves relevant sections, analyzes the context, and generates an answer grounded in your uploaded content.
 
-- **Data Privacy and Security**: Your privacy and data security are of utmost importance to us. While the app is hosted on a cloud server, we take significant measures to ensure that your data is handled securely. Uploaded documents are processed in real-time, and we do not store them or any extracted information longer than necessary to provide answers to your queries. We design our data handling practices to respect user privacy and comply with data protection regulations. However, users should be aware that data is transmitted over the internet to our server for processing. We encourage users to review our privacy policy for detailed information on how data is managed and protected.
+---
 
-Always happy to extend the boundaries of RAGS , please write an issue or reach out with any new ideas or contributions.
+## Key Features
+
+- **Retrieval-Augmented Generation (RAG):** Combines document retrieval with LLM reasoning for contextual answers.  
+- **Faithfulness Scoring:** Evaluates how closely each answer aligns with the source material.  
+- **Privacy-Conscious Design:** Uploaded documents are processed in real-time and not persistently stored.  
+- **Security Evaluation Mode:** Built to test and iterate on security methodologies for RAG systems.  
+- **Custom Evaluation Metrics:** Experiment with metrics beyond traditional accuracy and relevance.  
+
+---
+
+## Important Considerations
+
+### Faithfulness Score
+In some cases, the **faithfulness score** may appear as zero, even when the answer originates from the uploaded document.  
+This occurs when the evaluation metric fails to detect sufficient lexical overlap a common challenge when paraphrasing or summarizing.
+
+### Content Limitations
+Current limitations include:
+- Incomplete interpretation of **tables**, **diagrams**, or **figures**.  
+- Partial accuracy for **scanned or image-based PDFs** without embedded text.  
+
+Ongoing updates aim to enhance structured data extraction and OCR-based comprehension.
+
+### Data Privacy and Security
+Your privacy is a core design principle:
+- Uploaded files are **processed in-memory** and **not permanently stored**.  
+- Data transmission is encrypted via HTTPS while interacting with the hosted server.  
+- No logs of document contents or answers are retained.  
+
+We encourage users to review the project’s **Privacy Policy** (to be added) for full transparency on data handling practices.
+
+---
+
+## Roadmap
+
+- [x] Core RAG implementation using LlamaIndex  
+- [x] Faithfulness evaluation metric integration  
+- [ ] Advanced table and figure parsing  
+- [ ] Configurable multi-document retrieval pipeline  
+- [ ] Integration of local/offline LLMs via Ollama or vLLM  
+- [ ] Add privacy policy and user control dashboard  
+
+---
+
+## Contribution & Feedback
+
+DocuWise 2.0 is open for exploration, collaboration, and ideas.  
+If you’d like to contribute whether it’s improving metrics, refining RAG workflows, or experimenting with new evaluation paradigms feel free to open an [issue](https://github.com/TitasDas/DocuWise2.0/issues) or start a discussion.
+
+> Always happy to extend the boundaries of RAG systems every contribution helps make retrieval-based AI more secure, interpretable, and useful.
+
+---
