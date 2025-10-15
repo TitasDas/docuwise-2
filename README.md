@@ -1,6 +1,6 @@
 # Docuwise 2.0
 
-Welcome to [Docuwise 2.0](https://docuwise.streamlit.app/), a quickly mocked up RAG app to play around with security methodologies and custom evaluation metrics that can be used in RAGs. 
+Welcome to [Docuwise 2.0](https://docuwise.streamlit.app/), a quickly mocked up RAG app to play around with security methodologies and custom evaluation metrics that can be used in RAGS. 
 
 ## How to Use Docuwise 2.0
 
@@ -22,4 +22,4 @@ While Docuwise 2.0 is designed to be a powerful tool for document analysis, ther
 
 - **Data Privacy and Security**: Your privacy and data security are of utmost importance to us. While the app is hosted on a cloud server, we take significant measures to ensure that your data is handled securely. Uploaded documents are processed in real-time, and we do not store them or any extracted information longer than necessary to provide answers to your queries. We design our data handling practices to respect user privacy and comply with data protection regulations. However, users should be aware that data is transmitted over the internet to our server for processing. We encourage users to review our privacy policy for detailed information on how data is managed and protected.
 
-Always happy to extend the boundaries of RAGs , please write an issue or reach out with any new ideas or contributions.
+Always happy to extend the boundaries of RAGS , please write an issue or reach out with any new ideas or contributions.
