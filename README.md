@@ -17,11 +17,11 @@ This project serves as both a prototype and a research sandbox for improving the
 >  
 > DocuWise 2.0 prioritizes **exploration over scalability**, **observability**, and **security hardening**.  
 > A production-ready RAG system would require:
-> - Persistent vector storage (e.g., Qdrant, Weaviate, or FAISS with proper indexing)  
+> - Persistent vector storage (e.g. Pinecone, Qdrant, Weaviate, or FAISS with proper indexing)  
 > - Secure API key management and backend isolation  
 > - Evaluation pipelines with logging, caching, and consistency checks  
 > - Fine-tuned prompt templates and controlled retrieval workflows  
-> - Data governance and privacy guarantees  ...(and many other optimizations and additions to the user and data flow architecture)
+> - Data governance, privacy controls, and a well-defined user/data flow architecture — along with several other production-grade optimizations. 
 >  
 > Think of this app as a **research tool and experimental baseline**, not as a deployment blueprint.
 
