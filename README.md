@@ -9,6 +9,24 @@ This project serves as both a prototype and a research sandbox for improving the
 
 ---
 
+## ⚠️ Important Disclaimer
+
+> **Warning:**  
+> This project is **not representative of a production-grade RAG system**.  
+> It was intentionally built as a **lightweight prototype** for experimentation and learning not for deployment in live, user-facing environments.  
+>  
+> DocuWise 2.0 prioritizes **exploration over scalability**, **observability**, and **security hardening**.  
+> A production-ready RAG system would require:
+> - Persistent vector storage (e.g., Qdrant, Weaviate, or FAISS with proper indexing)  
+> - Secure API key management and backend isolation  
+> - Evaluation pipelines with logging, caching, and consistency checks  
+> - Fine-tuned prompt templates and controlled retrieval workflows  
+> - Data governance and privacy guarantees  ...(and many other optimizations and additions to the user and data flow architecture)
+>  
+> Think of this app as a **research tool and experimental baseline**, not as a deployment blueprint.
+
+---
+
 ## Getting Started
 
 Follow these steps to begin extracting knowledge from your PDF documents:
@@ -75,7 +93,7 @@ We encourage users to review the project’s **Privacy Policy** (to be added) fo
 
 ## Contribution & Feedback
 
-DocuWise 2.0 is open for exploration, collaboration, and ideas.  
+DocuWise 2.0 is open for exploration, collaboration, and ideas. 
 If you’d like to contribute whether it’s improving metrics, refining RAG workflows, or experimenting with new evaluation paradigms feel free to open an [issue](https://github.com/TitasDas/DocuWise2.0/issues) or start a discussion.
 
 > Always happy to extend the boundaries of RAG systems every contribution helps make retrieval-based AI more secure, interpretable, and useful.
