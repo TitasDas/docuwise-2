@@ -59,9 +59,12 @@ DocuWise 2.0 retrieves relevant sections, analyzes the context, and generates an
 
 ## Important Considerations
 
-### Evaluation
 In some cases, the **faithfulness score** may appear as zero, even when the answer originates from the uploaded document.  
 This occurs when the evaluation metric fails to detect sufficient lexical overlap a common challenge when paraphrasing or summarizing.
+
+---
+
+## Upcoming features
 
 ### Security of LLM based systems
 - Inhibit prompt injection attacks by design - 
