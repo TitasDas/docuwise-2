@@ -59,24 +59,12 @@ DocuWise 2.0 retrieves relevant sections, analyzes the context, and generates an
 
 ## Important Considerations
 
-### Faithfulness Score
+### Evaluation
 In some cases, the **faithfulness score** may appear as zero, even when the answer originates from the uploaded document.  
 This occurs when the evaluation metric fails to detect sufficient lexical overlap a common challenge when paraphrasing or summarizing.
 
-### Content Limitations
-Current limitations include:
-- Incomplete interpretation of **tables**, **diagrams**, or **figures**.  
-- Partial accuracy for **scanned or image-based PDFs** without embedded text.  
-
-Ongoing updates aim to enhance structured data extraction and OCR-based comprehension.
-
-### Data Privacy and Security
-Your privacy is a core design principle:
-- Uploaded files are **processed in-memory** and **not permanently stored**.  
-- Data transmission is encrypted via HTTPS while interacting with the hosted server.  
-- No logs of document contents or answers are retained.  
-
-We encourage users to review the project’s **Privacy Policy** (to be added) for full transparency on data handling practices.
+### Security of LLM based systems
+- Inhibit prompt injection attacks by design - 
 
 ---
 
