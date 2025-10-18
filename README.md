@@ -80,17 +80,6 @@ We encourage users to review the project’s **Privacy Policy** (to be added) fo
 
 ---
 
-## Roadmap
-
-- [x] Core RAG implementation using LlamaIndex  
-- [x] Faithfulness evaluation metric integration  
-- [ ] Advanced table and figure parsing  
-- [ ] Configurable multi-document retrieval pipeline  
-- [ ] Integration of local/offline LLMs via Ollama or vLLM  
-- [ ] Add privacy policy and user control dashboard  
-
----
-
 ## Contribution & Feedback
 
 DocuWise 2.0 is open for exploration, collaboration, and ideas. 
