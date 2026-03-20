@@ -7,6 +7,13 @@ Welcome to [**DocuWise 2.0**](https://docuwise.streamlit.app/) , an experimental
 
 This project serves as both a prototype and a research sandbox for improving the reliability and interpretability of LLM-powered document question-answering systems.
 
+
+## Preview
+
+<p align="left">
+  <img src="assets/docuwise-home.png" alt="DocuWise preview" width="720" />
+</p>
+
 ---
 
 ## ⚠️ Important Disclaimer
